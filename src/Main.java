@@ -2,6 +2,7 @@ import Equipment.Weapon;
 import Equipment.WeaponType;
 import Hero.HeroCharacter;
 import Hero.HeroType;
+import Hero.Warrior;
 
 import java.util.Scanner;
 
@@ -28,8 +29,14 @@ public class Main {
             character1.setDefaultStats();
             character1.printStats();
 
+                Warrior warrior = new Warrior();
+
+                warrior.printStats();
+
                 Weapon weapon = new Weapon();
+                System.out.println(weapon.getName());
                 weapon.generateRandomName(WeaponType.Hammer);
+                System.out.println(weapon.getName());
             }
 
 

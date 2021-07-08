@@ -60,17 +60,26 @@ public class HeroCharacter {
         this.secondaryAttributes.ElementalResistance =1;
     }
 
-    void levelUp(int i){
+    void levelUp(){
 
 
     }
 
 
+    /**Character name
+    • Character level
+    • Strength
+    • Dexterity
+    • Intelligence
+    • Health
+    • Armor Rating
+    • Elemental Resistance
+    • DPS**/
 
+    //TODO finish this
     public void printStats(){
         System.out.println("name = " + this.name);
         System.out.println("level = " + this.level);
-        System.out.println("HeroType = " + this.heroType);
         System.out.println("Strength = " + this.primaryAttributes.Strength);
         System.out.println("Dexterity = " + this.primaryAttributes.Dexterity);
         System.out.println("Intelligence = " + this.primaryAttributes.Intelligence);
@@ -78,19 +87,8 @@ public class HeroCharacter {
         System.out.println("Health = " + this.secondaryAttributes.Health);
         System.out.println("ArmorRating = " + this.secondaryAttributes.ArmorRating);
         System.out.println("ElementalResistance = " + this.secondaryAttributes.ElementalResistance);
+        System.out.println("DPS = " + this.secondaryAttributes.ElementalResistance);
 
     }
-
-    public void printAtributes(){
-        System.out.println("Strength            = " + this.primaryAttributes.Strength);
-        System.out.println("Dexterity            = " + this.primaryAttributes.Dexterity);
-        System.out.println("Intelligence        = " + this.primaryAttributes.Intelligence);
-        System.out.println("Vitality            = " + this.primaryAttributes.Vitality);
-        System.out.println("Health              = " + this.secondaryAttributes.Health);
-        System.out.println("ArmorRating         = " + this.secondaryAttributes.ArmorRating);
-        System.out.println("ElementalResistance = " + this.secondaryAttributes.ElementalResistance);
-
-    }
-
 
 }
