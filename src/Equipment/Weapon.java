@@ -2,13 +2,12 @@ package Equipment;
 
 import java.util.Random;
 
-public class Weapon {
+public class Weapon extends Equipment{
 
-    String name;
+
     WeaponType weaponType;
     int damage;
     double attackSpeed;
-    int levelRequirement;
 
     Random rand = new Random();
 

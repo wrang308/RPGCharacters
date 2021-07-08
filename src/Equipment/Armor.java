@@ -1,8 +1,7 @@
 package Equipment;
 
-public class Armor {
-    String name;
+public class Armor extends Equipment{
+
     ArmorType armorType;
     int ArmorRating;
-    int levelRequirement;
 }
