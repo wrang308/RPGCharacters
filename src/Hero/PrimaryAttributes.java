@@ -1,8 +1,11 @@
 package Hero;
 
-public class PrimaryAtributes {
+public class PrimaryAttributes {
     int Strength;
     int Dexterity;
     int Intelligence;
     int Vitality;
+
+
+
 }

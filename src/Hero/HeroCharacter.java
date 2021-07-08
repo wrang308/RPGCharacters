@@ -7,7 +7,7 @@ public class HeroCharacter {
     int experience;
 
     HeroType heroType;
-    PrimaryAtributes primaryAtributes;
+    PrimaryAttributes primaryAttributes;
     SecondaryAttributes secondaryAttributes;
 
     // default constructor
@@ -16,7 +16,7 @@ public class HeroCharacter {
         this.name = "default";
         this.level = 1;
         this.experience = 0;
-        this.primaryAtributes = new PrimaryAtributes();
+        this.primaryAttributes = new PrimaryAttributes();
         this.secondaryAttributes = new SecondaryAttributes();
     }
     public HeroCharacter(String name, int level, int experience, HeroType heroType){
@@ -24,7 +24,7 @@ public class HeroCharacter {
     this.level = level;
     this.experience = experience;
     this.heroType = heroType;
-    this.primaryAtributes = new PrimaryAtributes();
+    this.primaryAttributes = new PrimaryAttributes();
     this.secondaryAttributes = new SecondaryAttributes();
     }
 
@@ -40,8 +40,8 @@ public class HeroCharacter {
         return experience;
     }
 
-    public PrimaryAtributes getPrimaryAtributes() {
-        return primaryAtributes;
+    public PrimaryAttributes getPrimaryAttributes() {
+        return primaryAttributes;
     }
 
     public SecondaryAttributes getSecondaryAttributes() {
@@ -51,10 +51,10 @@ public class HeroCharacter {
 
 
     public void setDefaultStats(){
-        this.primaryAtributes.Strength = 1;
-        this.primaryAtributes.Dexterity = 1;
-        this.primaryAtributes.Intelligence = 1;
-        this.primaryAtributes.Vitality = 1;
+        this.primaryAttributes.Strength = 1;
+        this.primaryAttributes.Dexterity = 1;
+        this.primaryAttributes.Intelligence = 1;
+        this.primaryAttributes.Vitality = 1;
         this.secondaryAttributes.Health = 1;
         this.secondaryAttributes.ArmorRating = 1;
         this.secondaryAttributes.ElementalResistance =1;
@@ -71,10 +71,10 @@ public class HeroCharacter {
         System.out.println("name = " + this.name);
         System.out.println("level = " + this.level);
         System.out.println("HeroType = " + this.heroType);
-        System.out.println("Strength = " + this.primaryAtributes.Strength);
-        System.out.println("Dexterity = " + this.primaryAtributes.Dexterity);
-        System.out.println("Intelligence = " + this.primaryAtributes.Intelligence);
-        System.out.println("Vitality = " + this.primaryAtributes.Vitality);
+        System.out.println("Strength = " + this.primaryAttributes.Strength);
+        System.out.println("Dexterity = " + this.primaryAttributes.Dexterity);
+        System.out.println("Intelligence = " + this.primaryAttributes.Intelligence);
+        System.out.println("Vitality = " + this.primaryAttributes.Vitality);
         System.out.println("Health = " + this.secondaryAttributes.Health);
         System.out.println("ArmorRating = " + this.secondaryAttributes.ArmorRating);
         System.out.println("ElementalResistance = " + this.secondaryAttributes.ElementalResistance);
@@ -82,10 +82,10 @@ public class HeroCharacter {
     }
 
     public void printAtributes(){
-        System.out.println("Strength            = " + this.primaryAtributes.Strength);
-        System.out.println("Dexterity            = " + this.primaryAtributes.Dexterity);
-        System.out.println("Intelligence        = " + this.primaryAtributes.Intelligence);
-        System.out.println("Vitality            = " + this.primaryAtributes.Vitality);
+        System.out.println("Strength            = " + this.primaryAttributes.Strength);
+        System.out.println("Dexterity            = " + this.primaryAttributes.Dexterity);
+        System.out.println("Intelligence        = " + this.primaryAttributes.Intelligence);
+        System.out.println("Vitality            = " + this.primaryAttributes.Vitality);
         System.out.println("Health              = " + this.secondaryAttributes.Health);
         System.out.println("ArmorRating         = " + this.secondaryAttributes.ArmorRating);
         System.out.println("ElementalResistance = " + this.secondaryAttributes.ElementalResistance);
