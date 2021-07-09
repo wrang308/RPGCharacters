@@ -1,6 +1,13 @@
 package Hero;
 
 public class PrimaryAttributes {
+    public PrimaryAttributes(int strength, int dexterity, int intelligence, int vitality) {
+        Strength = strength;
+        Dexterity = dexterity;
+        Intelligence = intelligence;
+        Vitality = vitality;
+    }
+
     public int getStrength() {
         return Strength;
     }
@@ -21,15 +28,9 @@ public class PrimaryAttributes {
         Strength = strength;
     }
 
-    int Strength;
-    int Dexterity;
-    int Intelligence;
-    int Vitality;
-
-    public void baseStats(){
-
-    }
-
-
+    private int Strength;
+    private int Dexterity;
+    private int Intelligence;
+    private int Vitality;
 
 }

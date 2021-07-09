@@ -1,5 +1,8 @@
 package Hero;
 
+import Equipment.EquipmentSlot;
+import Equipment.Weapon;
+
 public class Warrior extends HeroCharacter {
 
     public Warrior(){
@@ -7,8 +10,8 @@ public class Warrior extends HeroCharacter {
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
-        this.totalPrimaryAttributes = new PrimaryAttributes();
-        this.secondaryAttributes = new SecondaryAttributes();
+        this.totalPrimaryAttributes = new PrimaryAttributes(1,1,1,1);
+        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
         //setDefaultStats();
     }
 
@@ -17,31 +20,29 @@ public class Warrior extends HeroCharacter {
         this.setLevel(level);
         this.setExperience(experience);
         this.heroType = HeroType.Warrior;
-        this.basePrimaryAttributes = new PrimaryAttributes();
-        this.secondaryAttributes = new SecondaryAttributes();
+        this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
+        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
+    }
+
+    public Warrior(String name, int level, int experience, HeroType heroType) {
+        super(name, level, experience, heroType);
+    }
+
+    public void getItem(){
+        System.out.println(((Weapon)this.equipment.get(EquipmentSlot.Weapon)).getAttackSpeed());
     }
 
 
     @Override
     public void setDefaultStats(){
-        this.basePrimaryAttributes.Strength = 5;
-        this.basePrimaryAttributes.Dexterity = 2;
-        this.basePrimaryAttributes.Intelligence = 1;
-        this.basePrimaryAttributes.Vitality = 10;
-        this.secondaryAttributes.Health = 1;
-        this.secondaryAttributes.ArmorRating = 1;
-        this.secondaryAttributes.ElementalResistance =1;
+
+
     }
 
     @Override
     void levelUpStats(){
-        this.basePrimaryAttributes.Strength += 3;
-        this.basePrimaryAttributes.Dexterity += 2;
-        this.basePrimaryAttributes.Intelligence += 1;
-        this.basePrimaryAttributes.Vitality += 3;
-        this.secondaryAttributes.Health += 10;
-        this.secondaryAttributes.ArmorRating += 0;
-        this.secondaryAttributes.ElementalResistance += 0;
+
+
     }
 
 }

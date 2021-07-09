@@ -4,6 +4,12 @@ import java.util.Random;
 
 public class Weapon extends Equipment{
 
+    public Weapon(WeaponType weaponType, int damage, double attackSpeed) {
+        this.weaponType = weaponType;
+        this.damage = damage;
+        this.attackSpeed = attackSpeed;
+    }
+
     public Weapon(){
         this.name = "default";
         this.slot = EquipmentSlot.Weapon;

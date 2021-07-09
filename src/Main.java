@@ -11,11 +11,10 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         int input = 0;
         while(true){
-                try {
-                    input = scan.nextInt();
-                }catch (Exception e){
-                    System.out.println(e);
-                }
+
+
+            input = scan.nextInt();
+
 
             if (input == 1){
                 System.out.println("hej");
@@ -38,12 +37,14 @@ public class Main {
                 body.generateRandomName(body.getSlot());
                 weapon1.generateRandomName(WeaponType.Sword);
                 System.out.println(weapon.getName());
-                weapon.generateRandomName(WeaponType.Hammer);
+                //weapon.generateRandomName(WeaponType.Hammer);
                 System.out.println(weapon.getName());
 
                 warrior.equipItem(weapon);
                 warrior.equipItem(body);
                 warrior.equipItem(weapon1);
+
+                warrior.getItem();
             }
 
 
