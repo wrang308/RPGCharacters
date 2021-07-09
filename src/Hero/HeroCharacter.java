@@ -1,14 +1,20 @@
 package Hero;
 
-public class HeroCharacter {
+import Equipment.Equipment;
+
+import java.util.Scanner;
+
+public abstract class HeroCharacter {
 
     String name;
     int level;
     int experience;
 
     HeroType heroType;
-    PrimaryAttributes primaryAttributes;
+    PrimaryAttributes basePrimaryAttributes;
+    PrimaryAttributes totalPrimaryAttributes;
     SecondaryAttributes secondaryAttributes;
+    Equipment[] equipment = new Equipment[4];
 
     // default constructor
     public HeroCharacter(){
@@ -16,15 +22,17 @@ public class HeroCharacter {
         this.name = "default";
         this.level = 1;
         this.experience = 0;
-        this.primaryAttributes = new PrimaryAttributes();
+        this.totalPrimaryAttributes = new PrimaryAttributes();
         this.secondaryAttributes = new SecondaryAttributes();
+        //setDefaultStats();
     }
+
     public HeroCharacter(String name, int level, int experience, HeroType heroType){
     this.name = name;
     this.level = level;
     this.experience = experience;
     this.heroType = heroType;
-    this.primaryAttributes = new PrimaryAttributes();
+    this.basePrimaryAttributes = new PrimaryAttributes();
     this.secondaryAttributes = new SecondaryAttributes();
     }
 
@@ -40,8 +48,8 @@ public class HeroCharacter {
         return experience;
     }
 
-    public PrimaryAttributes getPrimaryAttributes() {
-        return primaryAttributes;
+    public PrimaryAttributes getBasePrimaryAttributes() {
+        return basePrimaryAttributes;
     }
 
     public SecondaryAttributes getSecondaryAttributes() {
@@ -50,19 +58,49 @@ public class HeroCharacter {
 
 
 
-    public void setDefaultStats(){
-        this.primaryAttributes.Strength = 1;
-        this.primaryAttributes.Dexterity = 1;
-        this.primaryAttributes.Intelligence = 1;
-        this.primaryAttributes.Vitality = 1;
-        this.secondaryAttributes.Health = 1;
-        this.secondaryAttributes.ArmorRating = 1;
-        this.secondaryAttributes.ElementalResistance =1;
-    }
+    public abstract void setDefaultStats();
 
     void levelUp(){
 
+        levelUpStats();
+    }
 
+    void levelUpStats(){
+        this.basePrimaryAttributes.Strength += 1;
+        this.basePrimaryAttributes.Dexterity += 1;
+        this.basePrimaryAttributes.Intelligence += 1;
+        this.basePrimaryAttributes.Vitality += 1;
+        this.secondaryAttributes.Health += 10;
+        this.secondaryAttributes.ArmorRating += 0;
+        this.secondaryAttributes.ElementalResistance += 0;
+    }
+
+    public boolean equipItem(Equipment equipment){
+        this.equipment[equipment.getSlot().ordinal()] = equipment;
+        System.out.println(equipment.getName() + " equiped");
+        // tried out some stuff
+        /**
+        if(this.equipment[equipment.getSlot().ordinal()] == null){
+            System.out.println(equipment.getName() + " equiped");
+            this.equipment[equipment.getSlot().ordinal()] = equipment;
+        }else{
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Do you want to unequip " + this.equipment[equipment.getSlot().ordinal()].getName() + " 1/0?");
+            int input = scanner.nextInt();
+
+            if(input == 1){
+                this.equipment[equipment.getSlot().ordinal()] = equipment;
+                System.out.println(equipment.getName() + " equiped");
+            }else{
+                System.out.println(this.equipment[equipment.getSlot().ordinal()].getName() + " keeped");
+            }
+            scanner.close();
+
+        }
+         **/
+
+
+        return true;
     }
 
 
@@ -76,14 +114,14 @@ public class HeroCharacter {
     • Elemental Resistance
     • DPS**/
 
-    //TODO finish this
+    //TODO finish this and calculate the neccesary stuff
     public void printStats(){
         System.out.println("name = " + this.name);
         System.out.println("level = " + this.level);
-        System.out.println("Strength = " + this.primaryAttributes.Strength);
-        System.out.println("Dexterity = " + this.primaryAttributes.Dexterity);
-        System.out.println("Intelligence = " + this.primaryAttributes.Intelligence);
-        System.out.println("Vitality = " + this.primaryAttributes.Vitality);
+        System.out.println("Strength = " + this.basePrimaryAttributes.Strength);
+        System.out.println("Dexterity = " + this.basePrimaryAttributes.Dexterity);
+        System.out.println("Intelligence = " + this.basePrimaryAttributes.Intelligence);
+        System.out.println("Vitality = " + this.basePrimaryAttributes.Vitality);
         System.out.println("Health = " + this.secondaryAttributes.Health);
         System.out.println("ArmorRating = " + this.secondaryAttributes.ArmorRating);
         System.out.println("ElementalResistance = " + this.secondaryAttributes.ElementalResistance);

@@ -1,6 +1,6 @@
 package Equipment;
 
-public class Equipment {
+public abstract class Equipment {
 
 
     String name;

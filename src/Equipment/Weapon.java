@@ -17,9 +17,10 @@ public class Weapon extends Equipment{
     int damage;
     double attackSpeed;
 
-    Random rand = new Random();
+
 
     public void generateRandomName(WeaponType weaponType){
+        Random rand = new Random();
         String[] descriptions = {"Bloody", "Cool", "Big", "Small", "Pink", "Very very very long", "The eternal", "Hobbit", "Noble", "Dwarf-forged", "Icy", "Flaming", "Garbage"};
 
         this.name = descriptions[rand.nextInt(descriptions.length)] + " " + weaponType;
