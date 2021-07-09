@@ -4,18 +4,18 @@ public class Warrior extends HeroCharacter {
 
     public Warrior(){
         this.heroType = HeroType.Warrior;
-        this.name = "default";
-        this.level = 1;
-        this.experience = 0;
+        this.setName("defualt");
+        this.setLevel(1);
+        this.setExperience(0);
         this.totalPrimaryAttributes = new PrimaryAttributes();
         this.secondaryAttributes = new SecondaryAttributes();
         //setDefaultStats();
     }
 
     public Warrior(String name, int level, int experience){
-        this.name = name;
-        this.level = level;
-        this.experience = experience;
+        this.setName(name);
+        this.setLevel(level);
+        this.setExperience(experience);
         this.heroType = HeroType.Warrior;
         this.basePrimaryAttributes = new PrimaryAttributes();
         this.secondaryAttributes = new SecondaryAttributes();

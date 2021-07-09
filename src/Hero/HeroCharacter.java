@@ -6,9 +6,37 @@ import java.util.Scanner;
 
 public abstract class HeroCharacter {
 
-    String name;
-    int level;
-    int experience;
+    private String name;
+    private int level;
+    private int experience;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public void setHeroType(HeroType heroType) {
+        this.heroType = heroType;
+    }
+
+    public void setBasePrimaryAttributes(PrimaryAttributes basePrimaryAttributes) {
+        this.basePrimaryAttributes = basePrimaryAttributes;
+    }
+
+    public void setTotalPrimaryAttributes(PrimaryAttributes totalPrimaryAttributes) {
+        this.totalPrimaryAttributes = totalPrimaryAttributes;
+    }
+
+    public void setSecondaryAttributes(SecondaryAttributes secondaryAttributes) {
+        this.secondaryAttributes = secondaryAttributes;
+    }
 
     HeroType heroType;
     PrimaryAttributes basePrimaryAttributes;

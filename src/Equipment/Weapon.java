@@ -13,9 +13,35 @@ public class Weapon extends Equipment{
     }
 
 
-    WeaponType weaponType;
-    int damage;
-    double attackSpeed;
+    private WeaponType weaponType;
+    private int damage;
+    private double attackSpeed;
+
+
+    public WeaponType getWeaponType() {
+        return this.weaponType;
+    }
+
+    public void setWeaponType(WeaponType weaponType) {
+        this.weaponType = weaponType;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public double getAttackSpeed() {
+        return attackSpeed;
+    }
+
+    public void setAttackSpeed(double attackSpeed) {
+        this.attackSpeed = attackSpeed;
+    }
+
 
 
 
