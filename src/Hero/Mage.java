@@ -32,6 +32,7 @@ public class Mage extends HeroCharacter {
 
         if(true){
 
+            
         }
 
 
