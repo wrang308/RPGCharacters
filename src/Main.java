@@ -33,8 +33,12 @@ public class Main {
 
                 Weapon weapon = new Weapon();
                 Weapon weapon1 = new Weapon();
+
                 Armor body = new Armor(ArmorType.Cloth, 1 ,EquipmentSlot.Body);
+                body.setLevelRequirement(10);
                 body.generateRandomName(body.getSlot());
+                ranger.equipItem(body);
+
                 weapon1.generateRandomName(WeaponType.Sword);
                 System.out.println(weapon.getName());
                 //weapon.generateRandomName(WeaponType.Hammer);

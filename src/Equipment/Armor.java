@@ -14,6 +14,22 @@ public class Armor extends Equipment{
 
     }
 
+    public ArmorType getArmorType() {
+        return armorType;
+    }
+
+    public void setArmorType(ArmorType armorType) {
+        this.armorType = armorType;
+    }
+
+    public int getArmorRating() {
+        return ArmorRating;
+    }
+
+    public void setArmorRating(int armorRating) {
+        ArmorRating = armorRating;
+    }
+
     private ArmorType armorType;
     private int ArmorRating;
 

@@ -3,7 +3,7 @@ package Hero;
 public class Ranger extends HeroCharacter {
 
     public Ranger(){
-        this.heroType = HeroType.Rogue;
+        this.setHeroType(HeroType.Ranger);
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
@@ -16,10 +16,15 @@ public class Ranger extends HeroCharacter {
         this.setName(name);
         this.setLevel(level);
         this.setExperience(experience);
-        this.heroType = HeroType.Ranger;
+        this.setHeroType(HeroType.Ranger);
         this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
         this.secondaryAttributes = new SecondaryAttributes(1,1,1);
         //setDefaultStats();
+    }
+
+    @Override
+    public double getDPS() {
+        return 0;
     }
 
     public void setDefaultStats(){

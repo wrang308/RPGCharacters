@@ -3,7 +3,7 @@ package Hero;
 public class Mage extends HeroCharacter {
 
     public Mage(){
-        this.heroType = HeroType.Mage;
+        this.setHeroType(HeroType.Mage);
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
@@ -16,10 +16,12 @@ public class Mage extends HeroCharacter {
         this.setName(name);
         this.setLevel(level);
         this.setExperience(experience);
-        this.heroType = HeroType.Mage;
+        this.setHeroType(HeroType.Mage);
         this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
         this.secondaryAttributes = new SecondaryAttributes(1,1,1);
     }
+
+
 
     public void setDefaultStats(){
 
@@ -27,6 +29,10 @@ public class Mage extends HeroCharacter {
     }
 
     public double getDPS(){
+
+        if(true){
+
+        }
 
 
 

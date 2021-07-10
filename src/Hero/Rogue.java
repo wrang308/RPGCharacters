@@ -3,7 +3,7 @@ package Hero;
 public class Rogue extends HeroCharacter {
 
     public Rogue(){
-        this.heroType = HeroType.Rogue;
+        this.setHeroType(HeroType.Rogue);
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
@@ -16,9 +16,14 @@ public class Rogue extends HeroCharacter {
         this.setName(name);
         this.setLevel(level);
         this.setExperience(experience);
-        this.heroType = HeroType.Rogue;
+        this.setHeroType(HeroType.Rogue);
         this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
         this.secondaryAttributes = new SecondaryAttributes(1,1,1);
+    }
+
+    @Override
+    public double getDPS() {
+        return 0;
     }
 
     @Override

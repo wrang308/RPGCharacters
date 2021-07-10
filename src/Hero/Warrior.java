@@ -6,7 +6,7 @@ import Equipment.Weapon;
 public class Warrior extends HeroCharacter {
 
     public Warrior(){
-        this.heroType = HeroType.Warrior;
+        this.setHeroType(HeroType.Warrior);
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
@@ -19,7 +19,7 @@ public class Warrior extends HeroCharacter {
         this.setName(name);
         this.setLevel(level);
         this.setExperience(experience);
-        this.heroType = HeroType.Warrior;
+        this.setHeroType(HeroType.Warrior);
         this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
         this.secondaryAttributes = new SecondaryAttributes(1,1,1);
     }
@@ -32,6 +32,10 @@ public class Warrior extends HeroCharacter {
         System.out.println(((Weapon)this.equipment.get(EquipmentSlot.Weapon)).getAttackSpeed());
     }
 
+    @Override
+    public double getDPS() {
+        return 0;
+    }
 
     @Override
     public void setDefaultStats(){

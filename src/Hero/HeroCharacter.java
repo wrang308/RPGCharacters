@@ -2,6 +2,7 @@ package Hero;
 
 import Equipment.Equipment;
 import Equipment.EquipmentSlot;
+import Equipment.*;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -94,6 +95,8 @@ public abstract class HeroCharacter {
 
     public abstract void setDefaultStats();
 
+    public abstract double getDPS();
+
     void levelUp(){
 
         levelUpStats();
@@ -105,6 +108,49 @@ public abstract class HeroCharacter {
     }
 
     public boolean equipItem(Equipment equipment){
+        //System.out.println("a :" + this.getLevel() +  " b:" + equipment.getLevelRequirement());
+        if(this.getLevel() < equipment.getLevelRequirement()){
+            System.out.println("to low level to equip:" + equipment.getName());
+            return false;
+        }
+
+
+        if(equipment.getSlot().equals(Armor.class)) {
+
+            if (this.heroType == HeroType.Ranger || this.heroType == HeroType.Rogue && (((Armor) equipment).getArmorType() != ArmorType.Leather && ((Armor) equipment).getArmorType() != ArmorType.Mail)) {
+                System.out.println("invalid armorType");
+                return false;
+            }
+            if (this.heroType == HeroType.Warrior && (((Armor) equipment).getArmorType() != ArmorType.Plate && ((Armor) equipment).getArmorType() != ArmorType.Mail)) {
+                System.out.println("invalid armorType");
+                return false;
+            }
+            if (this.heroType == HeroType.Mage && ((Armor) equipment).getArmorType() != ArmorType.Cloth) {
+                System.out.println("invalid armorType");
+                return false;
+            }
+
+        }else if (equipment.getSlot().equals(Weapon.class)){
+
+            if (this.heroType == HeroType.Ranger && (((Weapon) equipment).getWeaponType() != WeaponType.Bow)) {
+                System.out.println("invalid armorType");
+                return false;
+            }
+            if (this.heroType == HeroType.Rogue && (((Weapon) equipment).getWeaponType() != WeaponType.Dagger && ((Weapon) equipment).getWeaponType() != WeaponType.Sword)) {
+                System.out.println("invalid armorType");
+                return false;
+            }
+            if (this.heroType == HeroType.Warrior && (((Weapon) equipment).getWeaponType() != WeaponType.Hammer && ((Weapon) equipment).getWeaponType() != WeaponType.Sword) && ((Weapon) equipment).getWeaponType() != WeaponType.Axe) {
+                System.out.println("invalid armorType");
+                return false;
+            }
+            if (this.heroType == HeroType.Mage && (((Weapon) equipment).getWeaponType() != WeaponType.Sword && ((Weapon) equipment).getWeaponType() != WeaponType.Wand)) {
+                System.out.println("invalid armorType");
+                return false;
+            }
+
+        }
+
 
         //if(equipment.getSlot() == Equipment.EquipmentSlot.Weapon){
 
@@ -112,7 +158,7 @@ public abstract class HeroCharacter {
         this.equipment.put(equipment.getSlot(), equipment);
         System.out.println(equipment.getName() + " equiped");
 
-        
+
 
 
         return true;
