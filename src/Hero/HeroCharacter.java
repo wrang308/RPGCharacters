@@ -159,6 +159,10 @@ public abstract class HeroCharacter {
         }
     }
 
+    public int getExperienceToNextLevel(){
+        return (this.level * 100) - this.experience;
+    }
+
     abstract void levelUpStats();
 
     public boolean equipItem(Equipment equipment){
