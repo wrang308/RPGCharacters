@@ -19,8 +19,28 @@ public abstract class HeroCharacter {
     PrimaryAttributes totalPrimaryAttributes;
     SecondaryAttributes secondaryAttributes;
     HashMap<EquipmentSlot, Equipment> equipment = new HashMap<EquipmentSlot, Equipment>();
-    //HashMap <> equipment =
-   // Equipment[] equipment = new Equipment[4];
+
+
+    // default constructor
+    public HeroCharacter(){
+        this.heroType = HeroType.Warrior;
+        this.name = "default";
+        this.level = 1;
+        this.experience = 0;
+        this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
+        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
+        this.setTotalPrimaryAttributes();
+        //setDefaultStats();
+    }
+
+    public HeroCharacter(String name, int level, int experience, HeroType heroType){
+        this.name = name;
+        this.level = level;
+        this.experience = experience;
+        this.heroType = heroType;
+        this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
+        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
+    }
 
     public PrimaryAttributes getEquipmentAttributes(){
         PrimaryAttributes attributes = new PrimaryAttributes(0,0,0,0);
@@ -36,6 +56,7 @@ public abstract class HeroCharacter {
 
     public void setLevel(int level) {
         this.level = level;
+        this.experience = 0;
     }
 
     public void setExperience(int experience) {
@@ -91,26 +112,6 @@ public abstract class HeroCharacter {
 
 
 
-    // default constructor
-    public HeroCharacter(){
-        this.heroType = HeroType.Warrior;
-        this.name = "default";
-        this.level = 1;
-        this.experience = 0;
-        this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
-        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
-        this.setTotalPrimaryAttributes();
-        //setDefaultStats();
-    }
-
-    public HeroCharacter(String name, int level, int experience, HeroType heroType){
-    this.name = name;
-    this.level = level;
-    this.experience = experience;
-    this.heroType = heroType;
-    this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
-    this.secondaryAttributes = new SecondaryAttributes(1,1,1);
-    }
 
     public String getName() {
         return name;
