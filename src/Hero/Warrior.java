@@ -40,7 +40,6 @@ public class Warrior extends HeroCharacter {
             weaponDPS = ((Weapon)this.equipment.get(EquipmentSlot.Weapon)).getDPS();
         }
 
-        int totalStats = this.totalPrimaryAttributes.getDexterity() + this.totalPrimaryAttributes.getVitality() + this.totalPrimaryAttributes.getIntelligence() + this.totalPrimaryAttributes.getStrength();
         double dps = weaponDPS * (1 + ((double)this.totalPrimaryAttributes.getStrength()/100));
         return Math.round(dps * 100d)/100d;
     }

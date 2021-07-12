@@ -42,8 +42,7 @@ public class Mage extends HeroCharacter {
             weaponDPS = ((Weapon)this.equipment.get(EquipmentSlot.Weapon)).getDPS();
         }
 
-        int totalStats = this.totalPrimaryAttributes.getDexterity() + this.totalPrimaryAttributes.getVitality() + this.totalPrimaryAttributes.getIntelligence() + this.totalPrimaryAttributes.getStrength();
-        double dps = weaponDPS * (1+ ((double)(totalStats)/100)) * (1 + ((double)this.totalPrimaryAttributes.getIntelligence()/100));
+        double dps = weaponDPS * (1 + ((double)this.totalPrimaryAttributes.getIntelligence()/100));
         return Math.round(dps * 100d)/100d;
     }
 
