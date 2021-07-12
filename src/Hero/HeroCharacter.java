@@ -145,13 +145,21 @@ public abstract class HeroCharacter {
 
     void levelUp(){
 
+        this.experience = this.experience - (this.level * 100);
+        this.level++;
+        System.out.println(this.getName() + " is now lvl " + this.level);
         levelUpStats();
+        addExperience(0);
     }
 
-    void levelUpStats(){
-
-
+    public void  addExperience(int experience){
+        this.experience += experience;
+        if (this.experience >= (this.level * 100)){
+            levelUp();
+        }
     }
+
+    abstract void levelUpStats();
 
     public boolean equipItem(Equipment equipment){
 

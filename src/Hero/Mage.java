@@ -46,6 +46,8 @@ public class Mage extends HeroCharacter {
         return Math.round(dps * 100d)/100d;
     }
 
+
+
     void levelUpStats(){
 
     }

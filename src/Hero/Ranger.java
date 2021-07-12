@@ -20,7 +20,7 @@ public class Ranger extends HeroCharacter {
         this.setLevel(level);
         this.setHeroType(HeroType.Ranger);
         this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
-        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
+        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
         //setDefaultStats();
     }
 

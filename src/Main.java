@@ -24,6 +24,8 @@ public class Main {
             ranger.setDefaultStats();
             ranger.printStats();
             HeroCharacter character1 = new Mage();
+            character1.addExperience(999);
+                System.out.println(character1.getExperience());
             character1.getDPS();
             Weapon Atiesh = new Weapon(WeaponType.Staff,10.2 ,1);
             Atiesh.setAttributes(new PrimaryAttributes(1,1,1,1));
