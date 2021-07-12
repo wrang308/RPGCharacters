@@ -10,18 +10,18 @@ public class Ranger extends HeroCharacter {
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
-        this.totalPrimaryAttributes = new PrimaryAttributes(1,1,1,1);
-        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
-        setDefaultStats();
+        this.basePrimaryAttributes = new PrimaryAttributes(1,7,1,8);
+        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
+        setTotalPrimaryAttributes();
     }
 
     public Ranger(String name, int level){
         this.setName(name);
         this.setLevel(level);
         this.setHeroType(HeroType.Ranger);
-        this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
+        this.basePrimaryAttributes = new PrimaryAttributes(1,7,1,8);
         this.secondaryAttributes = new SecondaryAttributes(0,0,0);
-        //setDefaultStats();
+        setTotalPrimaryAttributes();
     }
 
     @Override
@@ -42,8 +42,10 @@ public class Ranger extends HeroCharacter {
     }
 
     void levelUpStats(){
-
-
+        this.basePrimaryAttributes.setStrength(this.basePrimaryAttributes.getStrength()+1);
+        this.basePrimaryAttributes.setDexterity(this.basePrimaryAttributes.getDexterity()+4);
+        this.basePrimaryAttributes.setIntelligence(this.basePrimaryAttributes.getIntelligence()+1);
+        this.basePrimaryAttributes.setVitality(this.basePrimaryAttributes.getVitality()+2);
     }
 
 }

@@ -42,14 +42,6 @@ public abstract class HeroCharacter {
         this.secondaryAttributes = new SecondaryAttributes(1,1,1);
     }
 
-    public PrimaryAttributes getEquipmentAttributes(){
-        PrimaryAttributes attributes = new PrimaryAttributes(0,0,0,0);
-
-        //attributes.setStrength(this.equipment.get(EquipmentSlot.Weapon).get);
-
-        return attributes;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -110,9 +102,6 @@ public abstract class HeroCharacter {
         return this.totalPrimaryAttributes;
     }
 
-
-
-
     public String getName() {
         return name;
     }
@@ -138,8 +127,6 @@ public abstract class HeroCharacter {
         //return getBasePrimaryAttributes().getDexterity();// +basePrimaryAttributes.getIntelligence() + basePrimaryAttributes.getStrength() + basePrimaryAttributes.getVitality();
     }
 
-
-
     public abstract void setDefaultStats();
 
     public abstract double getDPS();
@@ -151,6 +138,7 @@ public abstract class HeroCharacter {
         System.out.println(this.getName() + " is now lvl " + this.level);
         levelUpStats();
         addExperience(0);
+        setTotalPrimaryAttributes();
     }
 
     public void  addExperience(int experience){

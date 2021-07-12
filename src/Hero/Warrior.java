@@ -10,17 +10,19 @@ public class Warrior extends HeroCharacter {
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
-        this.totalPrimaryAttributes = new PrimaryAttributes(1,1,1,1);
-        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
-        //setDefaultStats();
+        this.basePrimaryAttributes = new PrimaryAttributes(5,2,1,10);
+        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
+        setTotalPrimaryAttributes();
     }
 
     public Warrior(String name, int level){
         this.setName(name);
         this.setLevel(level);
         this.setHeroType(HeroType.Warrior);
-        this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
-        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
+        this.basePrimaryAttributes = new PrimaryAttributes(5,2,1,10);
+        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
+        setTotalPrimaryAttributes();
+
     }
 
     public Warrior(String name, int level, int experience, HeroType heroType) {
@@ -39,7 +41,7 @@ public class Warrior extends HeroCharacter {
         }
 
         int totalStats = this.totalPrimaryAttributes.getDexterity() + this.totalPrimaryAttributes.getVitality() + this.totalPrimaryAttributes.getIntelligence() + this.totalPrimaryAttributes.getStrength();
-        double dps = weaponDPS * (1+ ((double)(totalStats)/100)) * (1 + ((double)this.totalPrimaryAttributes.getStrength()/100));
+        double dps = weaponDPS * (1 + ((double)this.totalPrimaryAttributes.getStrength()/100));
         return Math.round(dps * 100d)/100d;
     }
 
@@ -51,8 +53,10 @@ public class Warrior extends HeroCharacter {
 
     @Override
     void levelUpStats(){
-
-
+        this.basePrimaryAttributes.setStrength(this.basePrimaryAttributes.getStrength()+3);
+        this.basePrimaryAttributes.setDexterity(this.basePrimaryAttributes.getDexterity()+2);
+        this.basePrimaryAttributes.setIntelligence(this.basePrimaryAttributes.getIntelligence()+1);
+        this.basePrimaryAttributes.setVitality(this.basePrimaryAttributes.getVitality()+5);
     }
 
 }

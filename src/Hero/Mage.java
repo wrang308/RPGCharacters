@@ -10,17 +10,18 @@ public class Mage extends HeroCharacter {
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
-        totalPrimaryAttributes = new PrimaryAttributes(1,1,1,1);
-        secondaryAttributes = new SecondaryAttributes(1,1,1);
-        //setDefaultStats();
+        this.basePrimaryAttributes = new PrimaryAttributes(1,1,8,5);
+        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
+        setTotalPrimaryAttributes();
     }
 
     public Mage(String name, int level){
         this.setName(name);
         this.setLevel(level);
         this.setHeroType(HeroType.Mage);
-        this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
-        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
+        this.basePrimaryAttributes = new PrimaryAttributes(1,1,8,5);
+        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
+        setTotalPrimaryAttributes();
     }
 
 
@@ -49,7 +50,11 @@ public class Mage extends HeroCharacter {
 
 
     void levelUpStats(){
-
-    }
+        System.out.println("level up stats");
+        this.basePrimaryAttributes.setStrength(this.basePrimaryAttributes.getStrength()+1);
+        this.basePrimaryAttributes.setDexterity(this.basePrimaryAttributes.getDexterity()+1);
+        this.basePrimaryAttributes.setIntelligence(this.basePrimaryAttributes.getIntelligence()+5);
+        this.basePrimaryAttributes.setVitality(this.basePrimaryAttributes.getVitality()+3);
+        }
 
 }
