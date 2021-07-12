@@ -1,11 +1,26 @@
 package Equipment;
 
+import Hero.PrimaryAttributes;
+
+import java.util.jar.Attributes;
+
 public abstract class Equipment {
 
 
-    String name;
-    int levelRequirement;
-    EquipmentSlot slot;
+    private String name;
+    private int levelRequirement;
+    private EquipmentSlot slot;
+    private PrimaryAttributes primaryAttributes;
+
+    public PrimaryAttributes getAttributes() {
+        return primaryAttributes;
+    }
+
+    public void setAttributes(PrimaryAttributes primaryAttributes) {
+        this.primaryAttributes = primaryAttributes;
+    }
+
+
 
     public String getName() {
         return name;

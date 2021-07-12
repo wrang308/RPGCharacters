@@ -28,6 +28,34 @@ public class PrimaryAttributes {
         Strength = strength;
     }
 
+    public void setDexterity(int dexterity) {
+        Dexterity = dexterity;
+    }
+
+    public void setIntelligence(int intelligence) {
+        Intelligence = intelligence;
+    }
+
+    public void setVitality(int vitality) {
+        Vitality = vitality;
+    }
+
+    public void addStrength(int strength) {
+        this.Strength += strength;
+    }
+
+    public void addDexterity(int dexterity) {
+        this.Dexterity += dexterity;
+    }
+
+    public void addIntelligence(int intelligence) {
+        this.Intelligence += intelligence;
+    }
+
+    public void addVitality(int vitality) {
+        this.Vitality += vitality;
+    }
+
     private int Strength;
     private int Dexterity;
     private int Intelligence;

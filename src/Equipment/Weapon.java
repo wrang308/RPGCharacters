@@ -4,23 +4,24 @@ import java.util.Random;
 
 public class Weapon extends Equipment{
 
-    public Weapon(WeaponType weaponType, int damage, double attackSpeed) {
+    public Weapon(WeaponType weaponType, double damage, double attackSpeed) {
         this.weaponType = weaponType;
         this.damage = damage;
         this.attackSpeed = attackSpeed;
+        this.setSlot(EquipmentSlot.Weapon);
     }
 
     public Weapon(){
-        this.name = "default";
-        this.slot = EquipmentSlot.Weapon;
-        this.damage = 1;
+        this.setName("default");
+        this.setSlot(EquipmentSlot.Weapon);
+        this.damage = 2;
         this.attackSpeed = 1.0;
         this.weaponType = WeaponType.Sword;
     }
 
 
     private WeaponType weaponType;
-    private int damage;
+    private double damage;
     private double attackSpeed;
 
 
@@ -32,7 +33,7 @@ public class Weapon extends Equipment{
         this.weaponType = weaponType;
     }
 
-    public int getDamage() {
+    public double getDamage() {
         return damage;
     }
 
@@ -48,6 +49,10 @@ public class Weapon extends Equipment{
         this.attackSpeed = attackSpeed;
     }
 
+    public double getDPS(){
+        return attackSpeed * damage;
+    }
+
 
 
 
@@ -55,7 +60,7 @@ public class Weapon extends Equipment{
         Random rand = new Random();
         String[] descriptions = {"Bloody", "Cool", "Big", "Small", "Pink", "Very very very long", "The eternal", "Hobbit", "Noble", "Dwarf-forged", "Icy", "Flaming", "Garbage"};
 
-        this.name = descriptions[rand.nextInt(descriptions.length)] + " " + weaponType;
-        System.out.println("WeaponName = " + this.name);
+        this.setName(descriptions[rand.nextInt(descriptions.length)] + " " + weaponType);
+        System.out.println("WeaponName = " + this.getName());
     }
 }

@@ -1,5 +1,8 @@
 package Hero;
 
+import Equipment.EquipmentSlot;
+import Equipment.Weapon;
+
 public class Ranger extends HeroCharacter {
 
     public Ranger(){
@@ -12,10 +15,9 @@ public class Ranger extends HeroCharacter {
         setDefaultStats();
     }
 
-    public Ranger(String name, int level, int experience){
+    public Ranger(String name, int level){
         this.setName(name);
         this.setLevel(level);
-        this.setExperience(experience);
         this.setHeroType(HeroType.Ranger);
         this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
         this.secondaryAttributes = new SecondaryAttributes(1,1,1);
@@ -24,7 +26,14 @@ public class Ranger extends HeroCharacter {
 
     @Override
     public double getDPS() {
-        return 0;
+        double weaponDPS = 1.0;
+        if(this.equipment.get(EquipmentSlot.Weapon) != null){
+            weaponDPS = ((Weapon)this.equipment.get(EquipmentSlot.Weapon)).getDPS();
+        }
+
+        int totalStats = this.totalPrimaryAttributes.getDexterity() + this.totalPrimaryAttributes.getVitality() + this.totalPrimaryAttributes.getIntelligence() + this.totalPrimaryAttributes.getStrength();
+        double dps = weaponDPS * (1+ ((double)(totalStats)/100)) * (1 + ((double)this.totalPrimaryAttributes.getDexterity()/100));
+        return Math.round(dps * 100d)/100d;
     }
 
     public void setDefaultStats(){

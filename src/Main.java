@@ -20,10 +20,29 @@ public class Main {
                 System.out.println("hej");
             }
             if (input == 2){
-                Ranger ranger = new Ranger("kalle", 10, 500);
+                Ranger ranger = new Ranger("kalle", 10);
             ranger.setDefaultStats();
             ranger.printStats();
             HeroCharacter character1 = new Mage();
+            character1.getDPS();
+            Weapon Atiesh = new Weapon(WeaponType.Staff,10.2 ,1);
+            Atiesh.setAttributes(new PrimaryAttributes(1,1,1,1));
+
+            Atiesh.setName("Atiesh");
+                System.out.println("str:"+character1.getTotalPrimaryAttributes1().getStrength());
+                System.out.println(character1.getDPS());
+            character1.equipItem(Atiesh);
+
+                System.out.println("str:"+character1.getTotalPrimaryAttributes1().getStrength());
+
+                System.out.println(character1.getDPS());
+                System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
+
+                //character1.getBasePrimaryAttributes().getStrength();
+
+                System.out.println(character1.getTotalPrimaryAttributes());
+
+
             //character1.setDefaultStats();
             //character1.printStats();
 

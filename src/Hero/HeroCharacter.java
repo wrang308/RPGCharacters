@@ -6,6 +6,7 @@ import Equipment.*;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.jar.Attributes;
 
 public abstract class HeroCharacter {
 
@@ -20,6 +21,14 @@ public abstract class HeroCharacter {
     HashMap<EquipmentSlot, Equipment> equipment = new HashMap<EquipmentSlot, Equipment>();
     //HashMap <> equipment =
    // Equipment[] equipment = new Equipment[4];
+
+    public PrimaryAttributes getEquipmentAttributes(){
+        PrimaryAttributes attributes = new PrimaryAttributes(0,0,0,0);
+
+        //attributes.setStrength(this.equipment.get(EquipmentSlot.Weapon).get);
+
+        return attributes;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -38,15 +47,46 @@ public abstract class HeroCharacter {
     }
 
     public void setBasePrimaryAttributes(PrimaryAttributes basePrimaryAttributes) {
-        this.basePrimaryAttributes = basePrimaryAttributes;
+        this.totalPrimaryAttributes = basePrimaryAttributes;
     }
 
-    public void setTotalPrimaryAttributes(PrimaryAttributes totalPrimaryAttributes) {
-        this.totalPrimaryAttributes = totalPrimaryAttributes;
+    public void setTotalPrimaryAttributes() {
+        PrimaryAttributes primaryAttributes = basePrimaryAttributes;
+        if(equipment.containsKey(EquipmentSlot.Weapon)){
+            primaryAttributes.addDexterity(equipment.get(EquipmentSlot.Weapon).getAttributes().getDexterity());
+            primaryAttributes.addStrength(equipment.get(EquipmentSlot.Weapon).getAttributes().getStrength());
+            primaryAttributes.addIntelligence(equipment.get(EquipmentSlot.Weapon).getAttributes().getIntelligence());
+            primaryAttributes.addVitality(equipment.get(EquipmentSlot.Weapon).getAttributes().getVitality());
+        }
+        if(equipment.containsKey(EquipmentSlot.Body)){
+            primaryAttributes.addDexterity(equipment.get(EquipmentSlot.Body).getAttributes().getDexterity());
+            primaryAttributes.addStrength(equipment.get(EquipmentSlot.Body).getAttributes().getStrength());
+            primaryAttributes.addIntelligence(equipment.get(EquipmentSlot.Body).getAttributes().getIntelligence());
+            primaryAttributes.addVitality(equipment.get(EquipmentSlot.Body).getAttributes().getVitality());
+        }
+        if(equipment.containsKey(EquipmentSlot.Head)){
+            primaryAttributes.addDexterity(equipment.get(EquipmentSlot.Head).getAttributes().getDexterity());
+            primaryAttributes.addStrength(equipment.get(EquipmentSlot.Head).getAttributes().getStrength());
+            primaryAttributes.addIntelligence(equipment.get(EquipmentSlot.Head).getAttributes().getIntelligence());
+            primaryAttributes.addVitality(equipment.get(EquipmentSlot.Head).getAttributes().getVitality());
+        }
+        if(equipment.containsKey(EquipmentSlot.Legs)){
+            primaryAttributes.addDexterity(equipment.get(EquipmentSlot.Legs).getAttributes().getDexterity());
+            primaryAttributes.addStrength(equipment.get(EquipmentSlot.Legs).getAttributes().getStrength());
+            primaryAttributes.addIntelligence(equipment.get(EquipmentSlot.Legs).getAttributes().getIntelligence());
+            primaryAttributes.addVitality(equipment.get(EquipmentSlot.Legs).getAttributes().getVitality());
+        }
+        this.totalPrimaryAttributes = primaryAttributes;
     }
 
     public void setSecondaryAttributes(SecondaryAttributes secondaryAttributes) {
         this.secondaryAttributes = secondaryAttributes;
+    }
+
+    public PrimaryAttributes getTotalPrimaryAttributes1(){
+        this.setTotalPrimaryAttributes();
+
+        return this.totalPrimaryAttributes;
     }
 
 
@@ -57,8 +97,9 @@ public abstract class HeroCharacter {
         this.name = "default";
         this.level = 1;
         this.experience = 0;
-        this.totalPrimaryAttributes = new PrimaryAttributes(1,1,1,1);
+        this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
         this.secondaryAttributes = new SecondaryAttributes(1,1,1);
+        this.setTotalPrimaryAttributes();
         //setDefaultStats();
     }
 
@@ -84,11 +125,16 @@ public abstract class HeroCharacter {
     }
 
     public PrimaryAttributes getBasePrimaryAttributes() {
-        return basePrimaryAttributes;
+        return this.basePrimaryAttributes;
     }
 
     public SecondaryAttributes getSecondaryAttributes() {
         return secondaryAttributes;
+    }
+
+    public int getTotalPrimaryAttributes(){
+        return this.totalPrimaryAttributes.getVitality() + this.totalPrimaryAttributes.getStrength() + this.totalPrimaryAttributes.getDexterity() + this.totalPrimaryAttributes.getIntelligence();
+        //return getBasePrimaryAttributes().getDexterity();// +basePrimaryAttributes.getIntelligence() + basePrimaryAttributes.getStrength() + basePrimaryAttributes.getVitality();
     }
 
 
@@ -108,15 +154,15 @@ public abstract class HeroCharacter {
     }
 
     public boolean equipItem(Equipment equipment){
-        //System.out.println("a :" + this.getLevel() +  " b:" + equipment.getLevelRequirement());
+
         if(this.getLevel() < equipment.getLevelRequirement()){
             System.out.println("to low level to equip:" + equipment.getName());
             return false;
         }
-
+        System.out.println(equipment.getSlot());
 
         if(equipment.getSlot().equals(Armor.class)) {
-
+        //if(!equipment.getSlot().equals(EquipmentSlot.Weapon)){
             if (this.heroType == HeroType.Ranger || this.heroType == HeroType.Rogue && (((Armor) equipment).getArmorType() != ArmorType.Leather && ((Armor) equipment).getArmorType() != ArmorType.Mail)) {
                 System.out.println("invalid armorType");
                 return false;
