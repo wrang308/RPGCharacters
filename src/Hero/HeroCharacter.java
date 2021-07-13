@@ -1,5 +1,7 @@
 package Hero;
 
+import CustomExceptions.InvalidArmorException;
+import CustomExceptions.InvalidWeaponException;
 import Equipment.Equipment;
 import Equipment.EquipmentSlot;
 import Equipment.*;
@@ -154,70 +156,47 @@ public abstract class HeroCharacter {
 
     abstract void levelUpStats();
 
-    static boolean checkLevelRequirement(int level, Equipment equipment) throws CustomException{
-        if(level < equipment.getLevelRequirement()){
-            System.out.println("to low level to equip:" + equipment.getName());
-            throw new CustomException("hej");
-            //throw new Equipment.CustomException("hej");
-           // return false;
-        }
-        return true;
-    }
-    public boolean equipItem(Equipment equipment) {
+    public boolean equipItem(Equipment equipment) throws InvalidArmorException, InvalidWeaponException {
 
-        try{
-            checkLevelRequirement(this.getLevel(), equipment);
-        }catch (Exception e){
-            System.out.println(e);
-        }
+        if(!equipment.getSlot().equals(EquipmentSlot.Weapon)) {
 
-        System.out.println(equipment.getSlot());
+            if(this.getLevel() < equipment.getLevelRequirement()){
+                throw new  InvalidArmorException("InvalidArmorException");
+            }
 
-        if(equipment.getSlot().equals(Armor.class)) {
-        //if(!equipment.getSlot().equals(EquipmentSlot.Weapon)){
+
             if (this.heroType == HeroType.Ranger || this.heroType == HeroType.Rogue && (((Armor) equipment).getArmorType() != ArmorType.Leather && ((Armor) equipment).getArmorType() != ArmorType.Mail)) {
-                System.out.println("invalid armorType");
-                return false;
+                throw new  InvalidArmorException("InvalidArmorException");
             }
             if (this.heroType == HeroType.Warrior && (((Armor) equipment).getArmorType() != ArmorType.Plate && ((Armor) equipment).getArmorType() != ArmorType.Mail)) {
-                System.out.println("invalid armorType");
-                return false;
+                throw new  InvalidArmorException("InvalidArmorException");
             }
             if (this.heroType == HeroType.Mage && ((Armor) equipment).getArmorType() != ArmorType.Cloth) {
-                System.out.println("invalid armorType");
-                return false;
+                throw new  InvalidArmorException("InvalidArmorException");
             }
 
-        }else if (equipment.getSlot().equals(Weapon.class)){
+        }else if (equipment.getSlot().equals(EquipmentSlot.Weapon)){
+            if(this.getLevel() < equipment.getLevelRequirement()){
+                throw new  InvalidWeaponException("InvalidWeaponException");
+            }
 
             if (this.heroType == HeroType.Ranger && (((Weapon) equipment).getWeaponType() != WeaponType.Bow)) {
-                System.out.println("invalid armorType");
-                return false;
+                throw new InvalidWeaponException("InvalidWeaponException");
             }
             if (this.heroType == HeroType.Rogue && (((Weapon) equipment).getWeaponType() != WeaponType.Dagger && ((Weapon) equipment).getWeaponType() != WeaponType.Sword)) {
-                System.out.println("invalid armorType");
-                return false;
+                throw new InvalidWeaponException("InvalidWeaponException");
             }
             if (this.heroType == HeroType.Warrior && (((Weapon) equipment).getWeaponType() != WeaponType.Hammer && ((Weapon) equipment).getWeaponType() != WeaponType.Sword) && ((Weapon) equipment).getWeaponType() != WeaponType.Axe) {
-                System.out.println("invalid armorType");
-                return false;
+                throw new InvalidWeaponException("InvalidWeaponException");
             }
             if (this.heroType == HeroType.Mage && (((Weapon) equipment).getWeaponType() != WeaponType.Sword && ((Weapon) equipment).getWeaponType() != WeaponType.Wand)) {
-                System.out.println("invalid armorType");
-                return false;
+                throw new InvalidWeaponException("InvalidWeaponException");
             }
 
         }
-
-
-        //if(equipment.getSlot() == Equipment.EquipmentSlot.Weapon){
-
 
         this.equipment.put(equipment.getSlot(), equipment);
         System.out.println(equipment.getName() + " equiped");
-
-
-
 
         return true;
     }

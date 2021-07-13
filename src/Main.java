@@ -3,7 +3,6 @@ import Hero.*;
 
 import java.util.Scanner;
 
-
 public class Main {
     public static void main(String[] args) {
 
@@ -38,24 +37,19 @@ public class Main {
             Atiesh.setName("Atiesh");
                 System.out.println("str:"+character1.getTotalPrimaryAttributes1().getStrength());
                 System.out.println(character1.getDPS());
-            character1.equipItem(Atiesh);
-
+                try {
+                    character1.equipItem(Atiesh);
+                }catch (Exception e){
+                    System.out.println(e);
+                }
                 System.out.println("str:"+character1.getTotalPrimaryAttributes1().getStrength());
 
                 System.out.println(character1.getDPS());
                 System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
 
-                //character1.getBasePrimaryAttributes().getStrength();
-
                 System.out.println(character1.getTotalPrimaryAttributes());
 
-
-            //character1.setDefaultStats();
-            //character1.printStats();
-
                 Warrior warrior = new Warrior();
-
-                //warrior.printStats();
 
                 Weapon weapon = new Weapon();
                 Weapon weapon1 = new Weapon();
@@ -63,22 +57,26 @@ public class Main {
                 Armor body = new Armor(ArmorType.Cloth, 1 ,EquipmentSlot.Body);
                 body.setLevelRequirement(10);
                 body.generateRandomName(body.getSlot());
-                ranger.equipItem(body);
+                try {
+                    ranger.equipItem(body);
+                }catch (Exception e){
+                    System.out.println(e);
+                }
 
                 weapon1.generateRandomName(WeaponType.Sword);
-                System.out.println(weapon.getName());
-                //weapon.generateRandomName(WeaponType.Hammer);
-                System.out.println(weapon.getName());
+                weapon1.setLevelRequirement(40);
 
-                warrior.equipItem(weapon);
-                warrior.equipItem(body);
-                warrior.equipItem(weapon1);
+                try {
+                    warrior.equipItem(weapon);
+                    //warrior.equipItem(body);
+                    warrior.equipItem(weapon1);
+                }catch (Exception e){
+                    System.out.println(e);
+                }
 
                 warrior.getItem();
             }
-
-
-
+            
         }
     }
 }
