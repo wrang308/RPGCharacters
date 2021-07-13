@@ -26,5 +26,11 @@ A Java console application made in Intellij.
 - ArmorRating
 - Elemental Resistance
 
+License
+----
 
+MIT
+
+
+**Free Software FTW**
 

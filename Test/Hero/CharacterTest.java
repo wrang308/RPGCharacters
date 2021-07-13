@@ -15,19 +15,19 @@ public class CharacterTest {
     private Object InvalidWeaponException;
 
     @Test
-    void testCreateChar() {
+    void TestCreateChar_ShouldExist() {
         Warrior warrior = new Warrior();
         assertNotNull(warrior);
     }
     @Test
-    void testLevelUp(){
+    void TestLevelUp_LevelUp_2(){
         Mage character = new Mage();
         assertEquals(1,character.getLevel());
         character.levelUp();
         assertEquals(2,character.getLevel());
     }
     @Test
-    void testAddExperienceAndLevelUp(){
+    void TestAddExperienceAndLevelUp_AddExperienceAndLevelUp_2_0Experience(){
         Mage character = new Mage();
         character.addExperience(50);
         character.levelUp();
@@ -35,7 +35,7 @@ public class CharacterTest {
         assertEquals(0, character.getExperience());
     }
     @Test
-    void testAddExperience_add99(){
+    void testAddExperience_add99_lvl1AndExpToNextLvl1(){
     Rogue character = new Rogue();
     character.addExperience(99);
         assertEquals(99, character.getExperience());
@@ -43,7 +43,7 @@ public class CharacterTest {
         assertEquals(1, character.getLevel());
     }
     @Test
-    void testAddExperience_add0(){
+    void testAddExperience_add0_lvl1AndExpToNextLvl100(){
         Rogue character = new Rogue();
         character.addExperience(0);
         assertEquals(0, character.getExperience());
@@ -52,7 +52,7 @@ public class CharacterTest {
     }
 
     @Test
-    void testAddExperience_add101(){
+    void testAddExperience_add101_lvl2AndExpToNextLvl199(){
         Rogue character = new Rogue();
 
         character.addExperience(101);
@@ -61,7 +61,7 @@ public class CharacterTest {
         assertEquals(2, character.getLevel());
     }
     @Test
-    void testAddExperience_add1000(){
+    void testAddExperience_add1000_lvl5AndExpToNextLvl500(){
         Rogue character = new Rogue();
 
         character.addExperience(1000);

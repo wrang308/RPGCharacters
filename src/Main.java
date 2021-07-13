@@ -19,7 +19,7 @@ public class Main {
                 System.out.println("hej");
             }
             if (input == 2){
-                Ranger ranger = new Ranger("kalle", 10);
+                /*Ranger ranger = new Ranger("kalle", 10);
             ranger.setDefaultStats();
             ranger.printStats();
             HeroCharacter character1 = new Mage();
@@ -42,7 +42,7 @@ public class Main {
                 }catch (Exception e){
                     System.out.println(e);
                 }
-                System.out.println("str:"+character1.getTotalPrimaryAttributes1().getStrength());
+                System.out.println("str:"+character1.getTotalPrimaryAttributes1().getStrength());*/
 
             }
 

@@ -8,50 +8,50 @@ import static org.junit.jupiter.api.Assertions.*;
 class EquipmentTest {
 
     @Test
-    void testWeaponExists(){
+    void CheckWeaponExists_shouldExist(){
         Weapon weapon = new Weapon();
         assertNotNull(weapon);
     }
     @Test
-    void testArmorExists(){
+    void CheckArmorExists_ShouldExist(){
         Armor armor = new Armor();
         assertNotNull(armor);
     }
 
     @Test
-    void testName(){
+    void CheckName_Kalle_Kalle(){
         Armor armor = new Armor();
         armor.setName("Kalle");
         assertEquals("Kalle", armor.getName());
     }
 
     @Test
-    void testGenerateRandomName(){
+    void CheckGenerateRandomName_Kalle_NotKalle(){
         Armor armor = new Armor();
         armor.setName("Kalle");
         armor.generateRandomName(EquipmentSlot.Body);
         assertNotEquals("Kalle", armor.getName());
     }
     @Test
-    void testWeaponAttackSpeed(){
+    void testWeaponAttackSpeed_1_1(){
         Weapon weapon = new Weapon();
         weapon.setAttackSpeed(1.0);
         assertEquals(1.0, weapon.getAttackSpeed());
     }
     @Test
-    void testWeaponDamage(){
+    void testWeaponDamag_2_2(){
         Weapon weapon = new Weapon();
         weapon.setDamage(2.0);
         assertEquals(2.0, weapon.getDamage());
     }
     @Test
-    void testWeaponType(){
+    void testWeaponType_Sword_Sword(){
         Weapon weapon = new Weapon();
         weapon.setWeaponType(WeaponType.Sword);
         assertSame(WeaponType.Sword, weapon.getWeaponType());
     }
     @Test
-    void testWeaponAttributes(){
+    void testWeaponAttributes_3333_3333(){
         Weapon weapon = new Weapon();
         weapon.setAttributes(new PrimaryAttributes(3,3,3,3));
         assertEquals(new PrimaryAttributes(3,3,3,3).getDexterity(), weapon.getAttributes().getDexterity());
@@ -60,7 +60,7 @@ class EquipmentTest {
         assertEquals(new PrimaryAttributes(3,3,3,3).getVitality(), weapon.getAttributes().getVitality());
     }
     @Test
-    void testArmorAttributes(){
+    void testArmorAttributes_3333_3333(){
         Armor armor = new Armor();
         armor.setAttributes(new PrimaryAttributes(3,3,3,3));
         assertEquals(new PrimaryAttributes(3,3,3,3).getDexterity(), armor.getAttributes().getDexterity());
