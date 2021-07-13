@@ -154,12 +154,23 @@ public abstract class HeroCharacter {
 
     abstract void levelUpStats();
 
-    public boolean equipItem(Equipment equipment){
-
-        if(this.getLevel() < equipment.getLevelRequirement()){
+    static boolean checkLevelRequirement(int level, Equipment equipment) throws CustomException{
+        if(level < equipment.getLevelRequirement()){
             System.out.println("to low level to equip:" + equipment.getName());
-            return false;
+            throw new CustomException("hej");
+            //throw new Equipment.CustomException("hej");
+           // return false;
         }
+        return true;
+    }
+    public boolean equipItem(Equipment equipment) {
+
+        try{
+            checkLevelRequirement(this.getLevel(), equipment);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
         System.out.println(equipment.getSlot());
 
         if(equipment.getSlot().equals(Armor.class)) {
