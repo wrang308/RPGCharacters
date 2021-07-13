@@ -42,7 +42,7 @@ public class Ranger extends HeroCharacter {
 
     void levelUpStats(){
         this.basePrimaryAttributes.setStrength(this.basePrimaryAttributes.getStrength()+1);
-        this.basePrimaryAttributes.setDexterity(this.basePrimaryAttributes.getDexterity()+4);
+        this.basePrimaryAttributes.setDexterity(this.basePrimaryAttributes.getDexterity()+5);
         this.basePrimaryAttributes.setIntelligence(this.basePrimaryAttributes.getIntelligence()+1);
         this.basePrimaryAttributes.setVitality(this.basePrimaryAttributes.getVitality()+2);
     }

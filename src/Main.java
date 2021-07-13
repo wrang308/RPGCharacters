@@ -44,39 +44,8 @@ public class Main {
                 }
                 System.out.println("str:"+character1.getTotalPrimaryAttributes1().getStrength());
 
-                System.out.println(character1.getDPS());
-                System.out.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
-
-                System.out.println(character1.getTotalPrimaryAttributes());
-
-                Warrior warrior = new Warrior();
-
-                Weapon weapon = new Weapon();
-                Weapon weapon1 = new Weapon();
-
-                Armor body = new Armor(ArmorType.Cloth, 1 ,EquipmentSlot.Body);
-                body.setLevelRequirement(10);
-                body.generateRandomName(body.getSlot());
-                try {
-                    ranger.equipItem(body);
-                }catch (Exception e){
-                    System.out.println(e);
-                }
-
-                weapon1.generateRandomName(WeaponType.Sword);
-                weapon1.setLevelRequirement(40);
-
-                try {
-                    warrior.equipItem(weapon);
-                    //warrior.equipItem(body);
-                    warrior.equipItem(weapon1);
-                }catch (Exception e){
-                    System.out.println(e);
-                }
-
-                warrior.getItem();
             }
-            
+
         }
     }
 }

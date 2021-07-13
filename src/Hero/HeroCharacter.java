@@ -30,9 +30,8 @@ public abstract class HeroCharacter {
         this.level = 1;
         this.experience = 0;
         this.basePrimaryAttributes = new PrimaryAttributes(1,1,1,1);
-        this.secondaryAttributes = new SecondaryAttributes(1,1,1);
+        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
         this.setTotalPrimaryAttributes();
-        //setDefaultStats();
     }
 
     public HeroCharacter(String name, int level, int experience, HeroType heroType){
@@ -92,10 +91,23 @@ public abstract class HeroCharacter {
             primaryAttributes.addVitality(equipment.get(EquipmentSlot.Legs).getAttributes().getVitality());
         }
         this.totalPrimaryAttributes = primaryAttributes;
+        setSecondaryAttributes();
     }
 
-    public void setSecondaryAttributes(SecondaryAttributes secondaryAttributes) {
-        this.secondaryAttributes = secondaryAttributes;
+    public void setSecondaryAttributes() {
+        int armorRating = 0;
+        if(equipment.containsKey(EquipmentSlot.Body)){
+            armorRating += ((Armor) equipment.get(EquipmentSlot.Body)).getArmorRating();
+        }
+        if(equipment.containsKey(EquipmentSlot.Head)){
+            armorRating += ((Armor) equipment.get(EquipmentSlot.Body)).getArmorRating();
+        }
+        if(equipment.containsKey(EquipmentSlot.Legs)){
+            armorRating += ((Armor) equipment.get(EquipmentSlot.Body)).getArmorRating();
+        }
+        this.secondaryAttributes.setArmorRating(armorRating + this.totalPrimaryAttributes.getDexterity() + this.totalPrimaryAttributes.getStrength());
+        this.secondaryAttributes.setHealth(this.totalPrimaryAttributes.getVitality() * 10);
+        this.secondaryAttributes.setElementalResistance(this.totalPrimaryAttributes.getIntelligence());
     }
 
     public PrimaryAttributes getTotalPrimaryAttributes1(){
@@ -135,23 +147,25 @@ public abstract class HeroCharacter {
 
     void levelUp(){
 
-        this.experience = this.experience - (this.level * 100);
-        this.level++;
-        System.out.println(this.getName() + " is now lvl " + this.level);
+        this.setExperience(0);
+        this.level = this.level + 1;
         levelUpStats();
-        addExperience(0);
         setTotalPrimaryAttributes();
+
     }
 
     public void  addExperience(int experience){
-        this.experience += experience;
-        if (this.experience >= (this.level * 100)){
-            levelUp();
+        this.setExperience(this.getExperience() + experience);
+        while (this.experience >= (this.level * 100)) {
+            this.setExperience(this.getExperience() - (this.level * 100));
+            this.level = this.level + 1;
+            levelUpStats();
         }
+        setTotalPrimaryAttributes();
     }
 
     public int getExperienceToNextLevel(){
-        return (this.level * 100) - this.experience;
+        return ((this.getLevel() * 100) - this.getExperience());
     }
 
     abstract void levelUpStats();
@@ -197,7 +211,7 @@ public abstract class HeroCharacter {
 
         this.equipment.put(equipment.getSlot(), equipment);
         System.out.println(equipment.getName() + " equiped");
-
+        setTotalPrimaryAttributes();
         return true;
     }
 

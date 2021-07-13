@@ -1,5 +1,7 @@
 package Equipment;
 
+import Hero.PrimaryAttributes;
+
 import java.util.Random;
 
 public class Weapon extends Equipment{
@@ -17,6 +19,7 @@ public class Weapon extends Equipment{
         this.damage = 2;
         this.attackSpeed = 1.0;
         this.weaponType = WeaponType.Sword;
+        this.setAttributes(new PrimaryAttributes(0,0,0,0));
     }
 
 
@@ -37,7 +40,7 @@ public class Weapon extends Equipment{
         return damage;
     }
 
-    public void setDamage(int damage) {
+    public void setDamage(double damage) {
         this.damage = damage;
     }
 

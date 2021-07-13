@@ -1,5 +1,7 @@
 package Equipment;
 
+import Hero.PrimaryAttributes;
+
 import java.util.Random;
 
 public class Armor extends Equipment{
@@ -11,6 +13,7 @@ public class Armor extends Equipment{
         this.armorType = armorType;
         ArmorRating = armorRating;
         this.setSlot(slot);
+        this.setAttributes(new PrimaryAttributes(0,0,0,0));
 
     }
 
