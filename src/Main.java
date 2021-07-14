@@ -35,14 +35,13 @@ public class Main {
             Atiesh.setAttributes(new PrimaryAttributes(1,10,1,1));
 
             Atiesh.setName("Atiesh");
-                System.out.println("str:"+character1.getTotalPrimaryAttributes1().getStrength());
+
                 System.out.println(character1.getDPS());
                 try {
                     character1.equipItem(Atiesh);
                 }catch (Exception e){
                     System.out.println(e);
-                }
-                System.out.println("str:"+character1.getTotalPrimaryAttributes1().getStrength());*/
+                }*/
 
             }
 

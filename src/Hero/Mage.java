@@ -10,8 +10,8 @@ public class Mage extends HeroCharacter {
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
-        this.basePrimaryAttributes = new PrimaryAttributes(1,1,8,5);
-        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
+        this.setBasePrimaryAttributes(new PrimaryAttributes(1,1,8,5));
+        this.setSecondaryAttributes();
         setTotalPrimaryAttributes();
     }
 
@@ -19,23 +19,15 @@ public class Mage extends HeroCharacter {
         this.setName(name);
         this.setLevel(level);
         this.setHeroType(HeroType.Mage);
-        this.basePrimaryAttributes = new PrimaryAttributes(1,1,8,5);
-        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
+        this.setBasePrimaryAttributes(new PrimaryAttributes(1,1,8,5));
+        this.setSecondaryAttributes();
         setTotalPrimaryAttributes();
     }
 
-
-
-    public void setDefaultStats(){
-
-
-    }
-
-    @Override
-    public int getTotalPrimaryAttributes() {
-        return super.getTotalPrimaryAttributes();
-    }
-
+    /**
+     * calculates the DPS based on the Mage HeroCharacter. Intelligence increases the DPS for the Mage class
+     * @return DPS of the Mage HeroCharacter
+     */
     public double getDPS(){
         double weaponDPS = 1.0;
         if(this.equipment.get(EquipmentSlot.Weapon) != null){
@@ -45,9 +37,10 @@ public class Mage extends HeroCharacter {
         double dps = weaponDPS * (1 + ((double)this.totalPrimaryAttributes.getIntelligence()/100));
         return Math.round(dps * 100d)/100d;
     }
-
-
-
+    /**
+     * Increases the base PrimaryAttributes based of the Mage HeroCharacter
+     */
+    @Override
     void levelUpStats(){
         System.out.println("level up stats");
         this.basePrimaryAttributes.setStrength(this.basePrimaryAttributes.getStrength()+1);
@@ -55,5 +48,4 @@ public class Mage extends HeroCharacter {
         this.basePrimaryAttributes.setIntelligence(this.basePrimaryAttributes.getIntelligence()+5);
         this.basePrimaryAttributes.setVitality(this.basePrimaryAttributes.getVitality()+3);
         }
-
 }

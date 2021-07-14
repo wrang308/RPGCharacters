@@ -23,7 +23,10 @@ public class Ranger extends HeroCharacter {
         this.secondaryAttributes = new SecondaryAttributes(0,0,0);
         setTotalPrimaryAttributes();
     }
-
+    /**
+     * calculates the DPS based on the Ranger HeroCharacter. Dexterity increases the DPS for the Ranger class
+     * @return DPS of the Ranger HeroCharacter
+     */
     @Override
     public double getDPS() {
         double weaponDPS = 1.0;
@@ -34,12 +37,10 @@ public class Ranger extends HeroCharacter {
         double dps = weaponDPS * (1 + ((double)this.totalPrimaryAttributes.getDexterity()/100));
         return Math.round(dps * 100d)/100d;
     }
-
-    public void setDefaultStats(){
-
-
-    }
-
+    /**
+     * Increases the base PrimaryAttributes based of the Ranger HeroCharacter
+     */
+    @Override
     void levelUpStats(){
         this.basePrimaryAttributes.setStrength(this.basePrimaryAttributes.getStrength()+1);
         this.basePrimaryAttributes.setDexterity(this.basePrimaryAttributes.getDexterity()+5);

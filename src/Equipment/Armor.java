@@ -36,14 +36,16 @@ public class Armor extends Equipment{
     private ArmorType armorType;
     private int ArmorRating;
 
-
-
-    public void generateRandomName(EquipmentSlot slot){
+    /**
+     *  Generates a random name for a armor Item. Can be used instead of making a name yourself
+     * @param slot to determine what kind of armor the name should have
+     * @return String of the name of the generated name
+     */
+    public String generateRandomArmorName(EquipmentSlot slot){
         Random rand = new Random();
         String[] descriptions = {"Bloody", "Cool", "Big", "Small", "Pink", "Very very very long", "The eternal", "Hobbit", "Noble", "Heavy", "Cristal", "Mithril", "Light", "Junk" , "Smelly", "Strong", "Shiny"};
 
-        this.setName(descriptions[rand.nextInt(descriptions.length)] + " " + slot);
-        System.out.println("ArmorName = " + this.getName());
+        return descriptions[rand.nextInt(descriptions.length)] + " " + slot;
     }
 
 

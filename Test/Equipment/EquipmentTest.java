@@ -29,8 +29,7 @@ class EquipmentTest {
     void CheckGenerateRandomName_Kalle_NotKalle(){
         Armor armor = new Armor();
         armor.setName("Kalle");
-        armor.generateRandomName(EquipmentSlot.Body);
-        assertNotEquals("Kalle", armor.getName());
+        assertNotEquals("Kalle", armor.generateRandomArmorName(EquipmentSlot.Body));
     }
     @Test
     void testWeaponAttackSpeed_1_1(){
@@ -39,7 +38,7 @@ class EquipmentTest {
         assertEquals(1.0, weapon.getAttackSpeed());
     }
     @Test
-    void testWeaponDamag_2_2(){
+    void testWeaponDamage_2_2(){
         Weapon weapon = new Weapon();
         weapon.setDamage(2.0);
         assertEquals(2.0, weapon.getDamage());

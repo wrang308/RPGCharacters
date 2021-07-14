@@ -23,7 +23,10 @@ public class Rogue extends HeroCharacter {
         this.secondaryAttributes = new SecondaryAttributes(0,0,0);
 
     }
-
+    /**
+     * calculates the DPS based on the Rogue HeroCharacter. Dexterity increases the DPS for the Rogue class
+     * @return DPS of the Rogue HeroCharacter
+     */
     @Override
     public double getDPS() {
         double weaponDPS = 1.0;
@@ -34,13 +37,9 @@ public class Rogue extends HeroCharacter {
         double dps = weaponDPS * (1 + ((double)this.totalPrimaryAttributes.getDexterity()/100));
         return Math.round(dps * 100d)/100d;
     }
-
-    @Override
-    public void setDefaultStats(){
-
-
-    }
-
+    /**
+     * Increases the base PrimaryAttributes based of the Rogue HeroCharacter
+     */
     @Override
     void levelUpStats(){
         this.basePrimaryAttributes.setStrength(this.basePrimaryAttributes.getStrength()+1);

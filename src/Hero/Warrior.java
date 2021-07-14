@@ -10,8 +10,8 @@ public class Warrior extends HeroCharacter {
         this.setName("defualt");
         this.setLevel(1);
         this.setExperience(0);
-        this.basePrimaryAttributes = new PrimaryAttributes(5,2,1,10);
-        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
+        this.setBasePrimaryAttributes(new PrimaryAttributes(5,2,1,10));
+        this.setSecondaryAttributes();
         setTotalPrimaryAttributes();
     }
 
@@ -19,8 +19,8 @@ public class Warrior extends HeroCharacter {
         this.setName(name);
         this.setLevel(level);
         this.setHeroType(HeroType.Warrior);
-        this.basePrimaryAttributes = new PrimaryAttributes(5,2,1,10);
-        this.secondaryAttributes = new SecondaryAttributes(0,0,0);
+        this.setBasePrimaryAttributes(new PrimaryAttributes(5,2,1,10));
+        this.setSecondaryAttributes();
         setTotalPrimaryAttributes();
 
     }
@@ -29,33 +29,30 @@ public class Warrior extends HeroCharacter {
         super(name, level, experience, heroType);
     }
 
-    public void getItem(){
-        System.out.println(((Weapon)this.equipment.get(EquipmentSlot.Weapon)).getAttackSpeed());
-    }
-
+    /**
+     * calculates the DPS based on the Warrior HeroCharacter. Strength increases the DPS for the Warrior class.
+     * @return DPS of the Warrior HeroCharacter
+     */
     @Override
     public double getDPS() {
         double weaponDPS = 1.0;
-        if(this.equipment.get(EquipmentSlot.Weapon) != null){
-            weaponDPS = ((Weapon)this.equipment.get(EquipmentSlot.Weapon)).getDPS();
+        if(this.getEquipment().get(EquipmentSlot.Weapon) != null){
+            weaponDPS = ((Weapon)this.getEquipment().get(EquipmentSlot.Weapon)).getDPS();
         }
 
-        double dps = weaponDPS * (1 + ((double)this.totalPrimaryAttributes.getStrength()/100));
+        double dps = weaponDPS * (1 + ((double)this.getTotalPrimaryAttributes().getStrength()/100));
         return Math.round(dps * 100d)/100d;
     }
 
-    @Override
-    public void setDefaultStats(){
-
-
-    }
-
+    /**
+     * Increases the base PrimaryAttributes based of the Warrior HeroCharacter
+     */
     @Override
     void levelUpStats(){
-        this.basePrimaryAttributes.setStrength(this.basePrimaryAttributes.getStrength()+3);
-        this.basePrimaryAttributes.setDexterity(this.basePrimaryAttributes.getDexterity()+2);
-        this.basePrimaryAttributes.setIntelligence(this.basePrimaryAttributes.getIntelligence()+1);
-        this.basePrimaryAttributes.setVitality(this.basePrimaryAttributes.getVitality()+5);
+        this.getBasePrimaryAttributes().setStrength(this.getBasePrimaryAttributes().getStrength()+3);
+        this.getBasePrimaryAttributes().setDexterity(this.getBasePrimaryAttributes().getDexterity()+2);
+        this.getBasePrimaryAttributes().setIntelligence(this.getBasePrimaryAttributes().getIntelligence()+1);
+        this.getBasePrimaryAttributes().setVitality(this.getBasePrimaryAttributes().getVitality()+5);
     }
 
 }
