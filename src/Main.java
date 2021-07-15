@@ -11,14 +11,14 @@ public class Main {
         int input = 0;
         while(true){
 
-
             input = scan.nextInt();
-
 
             if (input == 1){
                 System.out.println("hej");
             }
             if (input == 2){
+                Warrior warrior = new Warrior();
+                warrior.getDPS();
                 /*Ranger ranger = new Ranger("kalle", 10);
             ranger.setDefaultStats();
             ranger.printStats();

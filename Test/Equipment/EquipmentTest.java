@@ -53,7 +53,7 @@ class EquipmentTest {
     void testWeaponAttributes_3333_3333(){
         Weapon weapon = new Weapon();
         weapon.setAttributes(new PrimaryAttributes(3,3,3,3));
-        assertEquals(new PrimaryAttributes(3,3,3,3).getDexterity(), weapon.getAttributes().getDexterity());
+        assertEquals(3, weapon.getAttributes().getDexterity());
         assertEquals(new PrimaryAttributes(3,3,3,3).getIntelligence(), weapon.getAttributes().getIntelligence());
         assertEquals(new PrimaryAttributes(3,3,3,3).getStrength(), weapon.getAttributes().getStrength());
         assertEquals(new PrimaryAttributes(3,3,3,3).getVitality(), weapon.getAttributes().getVitality());

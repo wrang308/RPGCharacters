@@ -7,9 +7,11 @@ import java.util.Random;
 public class Armor extends Equipment{
 
     public Armor() {
+        super("default", 1, EquipmentSlot.Body, new PrimaryAttributes(0,0,0,0));
     }
 
     public Armor(ArmorType armorType, int armorRating, EquipmentSlot slot) {
+        super("default", 1, EquipmentSlot.Body, new PrimaryAttributes(0,0,0,0));
         this.armorType = armorType;
         ArmorRating = armorRating;
         this.setSlot(slot);

@@ -11,6 +11,13 @@ public abstract class Equipment {
     private int levelRequirement;
     private EquipmentSlot slot;
     private PrimaryAttributes primaryAttributes;
+    Equipment(String name, int levelRequirement, EquipmentSlot slot, PrimaryAttributes primaryAttributes){
+        this.name = name;
+        this.levelRequirement = levelRequirement;
+        this.slot = slot;
+        this.primaryAttributes = primaryAttributes;
+    }
+
 
     public PrimaryAttributes getAttributes() {
         return primaryAttributes;

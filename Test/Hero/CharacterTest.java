@@ -4,6 +4,7 @@ import CustomExceptions.InvalidArmorException;
 import CustomExceptions.InvalidWeaponException;
 import Equipment.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.RandomAccessFile;
@@ -14,7 +15,6 @@ public class CharacterTest {
 
     private Object InvalidWeaponException;
     Weapon Axe = new Weapon();
-
 
 
     @Test
@@ -98,64 +98,64 @@ public class CharacterTest {
     @Test
     void testRangerCreationAttributes(){
         Ranger character = new Ranger();
-        assertEquals(8,character.basePrimaryAttributes.getVitality());
-        assertEquals(1,character.basePrimaryAttributes.getStrength());
-        assertEquals(7,character.basePrimaryAttributes.getDexterity());
-        assertEquals(1,character.basePrimaryAttributes.getIntelligence());
+        assertEquals(8,character.getBasePrimaryAttributes().getVitality());
+        assertEquals(1,character.getBasePrimaryAttributes().getStrength());
+        assertEquals(7,character.getBasePrimaryAttributes().getDexterity());
+        assertEquals(1,character.getBasePrimaryAttributes().getIntelligence());
     }
     @Test
     void testRogueCreationAttributes(){
         Rogue character = new Rogue();
-        assertEquals(8,character.basePrimaryAttributes.getVitality());
-        assertEquals(2,character.basePrimaryAttributes.getStrength());
-        assertEquals(6,character.basePrimaryAttributes.getDexterity());
-        assertEquals(1,character.basePrimaryAttributes.getIntelligence());
+        assertEquals(8,character.getBasePrimaryAttributes().getVitality());
+        assertEquals(2,character.getBasePrimaryAttributes().getStrength());
+        assertEquals(6,character.getBasePrimaryAttributes().getDexterity());
+        assertEquals(1,character.getBasePrimaryAttributes().getIntelligence());
     }
 
     @Test
     void testWarriorLevelUpAttributes(){
         Warrior character = new Warrior();
         character.levelUp(1);
-        assertEquals(15,character.basePrimaryAttributes.getVitality());
-        assertEquals(8,character.basePrimaryAttributes.getStrength());
-        assertEquals(4,character.basePrimaryAttributes.getDexterity());
-        assertEquals(2,character.basePrimaryAttributes.getIntelligence());
+        assertEquals(15,character.getBasePrimaryAttributes().getVitality());
+        assertEquals(8,character.getBasePrimaryAttributes().getStrength());
+        assertEquals(4,character.getBasePrimaryAttributes().getDexterity());
+        assertEquals(2,character.getBasePrimaryAttributes().getIntelligence());
     }
     @Test
     void testWarriorLevelUpAttributes1(){
         Warrior character = new Warrior();
         character.levelUp(1);
-        assertEquals(15,character.totalPrimaryAttributes.getVitality());
-        assertEquals(8,character.totalPrimaryAttributes.getStrength());
-        assertEquals(4,character.totalPrimaryAttributes.getDexterity());
-        assertEquals(2,character.totalPrimaryAttributes.getIntelligence());
+        assertEquals(15,character.getBasePrimaryAttributes().getVitality());
+        assertEquals(8,character.getBasePrimaryAttributes().getStrength());
+        assertEquals(4,character.getBasePrimaryAttributes().getDexterity());
+        assertEquals(2,character.getBasePrimaryAttributes().getIntelligence());
     }
     @Test
     void testMageLevelUpAttributes(){
         Mage character = new Mage();
         character.levelUp(1);
-        assertEquals(8,character.basePrimaryAttributes.getVitality());
-        assertEquals(2,character.basePrimaryAttributes.getStrength());
-        assertEquals(2,character.basePrimaryAttributes.getDexterity());
-        assertEquals(13,character.basePrimaryAttributes.getIntelligence());
+        assertEquals(8,character.getBasePrimaryAttributes().getVitality());
+        assertEquals(2,character.getBasePrimaryAttributes().getStrength());
+        assertEquals(2,character.getBasePrimaryAttributes().getDexterity());
+        assertEquals(13,character.getBasePrimaryAttributes().getIntelligence());
     }
     @Test
     void testRangerLevelUpAttributes(){
         Ranger character = new Ranger();
         character.levelUp(1);
-        assertEquals(10,character.basePrimaryAttributes.getVitality());
-        assertEquals(2,character.basePrimaryAttributes.getStrength());
-        assertEquals(12,character.basePrimaryAttributes.getDexterity());
-        assertEquals(2,character.basePrimaryAttributes.getIntelligence());
+        assertEquals(10,character.getBasePrimaryAttributes().getVitality());
+        assertEquals(2,character.getBasePrimaryAttributes().getStrength());
+        assertEquals(12,character.getBasePrimaryAttributes().getDexterity());
+        assertEquals(2,character.getBasePrimaryAttributes().getIntelligence());
     }
     @Test
     void testRogueLevelUpAttributes(){
         Rogue character = new Rogue();
         character.levelUp(1);
-        assertEquals(11,character.basePrimaryAttributes.getVitality());
-        assertEquals(3,character.basePrimaryAttributes.getStrength());
-        assertEquals(10,character.basePrimaryAttributes.getDexterity());
-        assertEquals(2,character.basePrimaryAttributes.getIntelligence());
+        assertEquals(11,character.getBasePrimaryAttributes().getVitality());
+        assertEquals(3,character.getBasePrimaryAttributes().getStrength());
+        assertEquals(10,character.getBasePrimaryAttributes().getDexterity());
+        assertEquals(2,character.getBasePrimaryAttributes().getIntelligence());
     }
     @Test
     void testCharacterName_Kalle_Kalle(){
@@ -244,9 +244,9 @@ public class CharacterTest {
     @Test
     void secondaryAttributes(){
         Warrior character = new Warrior();
-        assertEquals(7,character.secondaryAttributes.getArmorRating());
-        assertEquals(100,character.secondaryAttributes.getHealth());
-        assertEquals(1,character.secondaryAttributes.getElementalResistance());
+        assertEquals(7,character.getSecondaryAttributes().getArmorRating());
+        assertEquals(100,character.getSecondaryAttributes().getHealth());
+        assertEquals(1,character.getSecondaryAttributes().getElementalResistance());
     }
     @Test
     void secondaryAttributes_WithArmor() throws InvalidArmorException, InvalidWeaponException {
@@ -256,9 +256,9 @@ public class CharacterTest {
         armor.setArmorType(ArmorType.Plate);
         armor.setAttributes(new PrimaryAttributes(1,1,1,1));
         character.equipItem(armor);
-        assertEquals(9,character.secondaryAttributes.getArmorRating());
-        assertEquals(110,character.secondaryAttributes.getHealth());
-        assertEquals(2,character.secondaryAttributes.getElementalResistance());
+        assertEquals(9,character.getSecondaryAttributes().getArmorRating());
+        assertEquals(110,character.getSecondaryAttributes().getHealth());
+        assertEquals(2,character.getSecondaryAttributes().getElementalResistance());
     }
     @Test
     void secondaryAttributes_WithArmorWithArmorRating() throws InvalidArmorException, InvalidWeaponException {
@@ -269,9 +269,33 @@ public class CharacterTest {
         armor.setAttributes(new PrimaryAttributes(1,1,1,1));
         armor.setArmorRating(1);
         character.equipItem(armor);
-        assertEquals(10,character.secondaryAttributes.getArmorRating());
-        assertEquals(110,character.secondaryAttributes.getHealth());
-        assertEquals(2,character.secondaryAttributes.getElementalResistance());
+        assertEquals(10,character.getSecondaryAttributes().getArmorRating());
+        assertEquals(110,character.getSecondaryAttributes().getHealth());
+        assertEquals(2,character.getSecondaryAttributes().getElementalResistance());
+    }
+
+    @Test
+    void checkPrintStats() throws InvalidArmorException, InvalidWeaponException {
+        Warrior character = new Warrior();
+        Armor armor = new Armor();
+        armor.setSlot(EquipmentSlot.Body);
+        armor.setArmorType(ArmorType.Plate);
+        armor.setAttributes(new PrimaryAttributes(1,1,1,1));
+        armor.setArmorRating(1);
+        character.equipItem(armor);
+        assertEquals("name = default\n" +
+                "level = 1\n" +
+                "experience = 0\n" +
+                "experience to next level = 100\n" +
+                "Strength = 6\n" +
+                "Dexterity = 3\n" +
+                "Intelligence = 2\n" +
+                "Vitality = 11\n" +
+                "Health = 110\n" +
+                "Armor Rating = 10\n" +
+                "Elemental Resistance = 2\n" +
+                "DPS = 1.06", character.printStats());
+
     }
 
 
